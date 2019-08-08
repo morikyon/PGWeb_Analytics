@@ -10,6 +10,7 @@ import time
 # filename
 filename = "programmableweb_list.csv"
 
+# init func
 def scraping():
     #url
     url_init = "https://www.programmableweb.com/category/all/apis"
@@ -18,8 +19,9 @@ def scraping():
     for urlNo in range(1, 786):
         url_page += str(urlNo)
         pgweb_scraping(url_page, False)
-        time.sleep(0.5)
+        time.sleep(1)
 
+# Scraping
 def pgweb_scraping(url, header):
     # url: URL
     # header: True --> Add header
@@ -37,6 +39,7 @@ def pgweb_scraping(url, header):
         write2Csv(programmableweb_rows ,True)
     write2Csv(programmableweb_rows ,False)
 
+    # Write data to CSV
 def write2Csv(rows, th):
     with open(filename, 'a', newline = '', encoding = 'utf-8') as f:
         writer = csv.writer(f)
